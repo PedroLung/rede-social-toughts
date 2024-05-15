@@ -9,9 +9,45 @@ const app = express()
 const conn = require('./db/conn')
 // Definir porta
 const port = 3000
+// Definir os arquivos estáticos
+app.use(express.static('public'))
+// Definir o tamplate engine e a view engine
+app.engine('hanglebars', exhbs.engine())
+app.set('view engine', 'handlebars')
+// Receber resposta do body (normalmente em formulário)
+app.use(express.urlencoded({
+  extended: true
+}))
+app.use(express.json)
+// session middleware
+app.use(
+  session({
+    name: 'session',
+    secret: 'nosso_secret',
+    resave: false,
+    saveUninitialized: false,
+    store: new FileStore({
+      logFn: function() {},
+      path: require('path').join(require('os').tmpdir(), 'sessions')
+    }),
+    cookie: {
+      secure: false,
+      maxAge: 360000,
+      expires: new Date(Date.now() + 360000),
+      httpOnly: true
+    }
+  })
+)
+// Flash message
+app.use(flash())
+//set session to res
+app.use((req, res, next) => {
+  if (req.session.userid) {
+    res.locals.session = req.session
+  }
 
-
-
+  next()
+})
 // Chamar a aplicação:
 conn 
   .sync() // Sincronizar o banco com a aplicação
