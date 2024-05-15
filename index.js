@@ -3,23 +3,27 @@ const exhbs     = require('express-handlebars') // Importando o handlebars
 const session   = require('express-session') // Importando as sessions
 const FileStore = require('session-file-store')(session) // Importando o file store
 const flash     = require('express-flash') // Importando o flash message
+
 // Inicializar o express
 const app = express()
 // Importando a conexão com o banco de dados
 const conn = require('./db/conn')
 // Definir porta
 const port = 3000
+
 // Definir os arquivos estáticos
 app.use(express.static('public'))
 // Definir o tamplate engine e a view engine
 app.engine('hanglebars', exhbs.engine())
 app.set('view engine', 'handlebars')
+
 // Receber resposta do body (normalmente em formulário)
 app.use(express.urlencoded({
   extended: true
 }))
 app.use(express.json)
 // session middleware
+
 app.use(
   session({
     name: 'session',
@@ -38,6 +42,7 @@ app.use(
     }
   })
 )
+
 // Flash message
 app.use(flash())
 //set session to res
@@ -48,6 +53,7 @@ app.use((req, res, next) => {
 
   next()
 })
+
 // Chamar a aplicação:
 conn 
   .sync() // Sincronizar o banco com a aplicação
