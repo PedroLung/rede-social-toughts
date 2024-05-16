@@ -5,7 +5,7 @@ const FileStore = require('session-file-store')(session) // Importando o file st
 const flash     = require('express-flash') // Importando o flash message
 
 // Inicializar o express
-const app = express()
+const app  = express()
 // Importando a conexão com o banco de dados
 const conn = require('./db/conn')
 // Definir porta
@@ -13,21 +13,28 @@ const port = 3000
 
 // Models:
 const Tought = require('./models/Tought')
-const User = require('./models/User')
+const User   = require('./models/User')
+
+// Import Routes
+const toughtsRoutes     = require('./router/toughtsRoutes')
+
+// Import Controllers
+const ToughtsController = require('./controllers/ToughtsController')
 
 // Definir os arquivos estáticos
 app.use(express.static('public'))
+
 // Definir o tamplate engine e a view engine
-app.engine('hanglebars', exhbs.engine())
+app.engine('handlebars', exhbs.engine())
 app.set('view engine', 'handlebars')
 
 // Receber resposta do body (normalmente em formulário)
 app.use(express.urlencoded({
   extended: true
 }))
-app.use(express.json)
-// session middleware
+app.use(express.json())
 
+// session middleware
 app.use(
   session({
     name: 'session',
@@ -49,6 +56,7 @@ app.use(
 
 // Flash message
 app.use(flash())
+
 //set session to res
 app.use((req, res, next) => {
   if (req.session.userid) {
@@ -57,6 +65,11 @@ app.use((req, res, next) => {
 
   next()
 })
+
+// Routes:
+app.use('/toughts', toughtsRoutes) // Definindo a rota toughtsRoutes no index.js
+
+app.get('/', ToughtsController.showToughts)
 
 // Chamar a aplicação:
 conn 
