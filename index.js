@@ -75,7 +75,7 @@ app.get('/', ToughtsController.showToughts)
 
 // Chamar a aplicação:
 conn 
-  //.sync({force: true}) força a criação do zero do banco de dados
+  //.sync({force: true}) // força a criação do zero do banco de dados
   .sync() // Sincronizar o banco com a aplicação
   .then(() => {
     // Inicializando a aplicação na porta 3000
