@@ -11,6 +11,10 @@ const conn = require('./db/conn')
 // Definir porta
 const port = 3000
 
+// Models:
+const Tought = require('./models/Tought')
+const User = require('./models/User')
+
 // Definir os arquivos estáticos
 app.use(express.static('public'))
 // Definir o tamplate engine e a view engine
@@ -56,6 +60,7 @@ app.use((req, res, next) => {
 
 // Chamar a aplicação:
 conn 
+  //.sync({force: true}) força a criação do zero do banco de dados
   .sync() // Sincronizar o banco com a aplicação
   .then(() => {
     // Inicializando a aplicação na porta 3000
