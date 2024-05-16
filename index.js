@@ -17,6 +17,7 @@ const User   = require('./models/User')
 
 // Import Routes
 const toughtsRoutes     = require('./router/toughtsRoutes')
+const authRoutes        = require('./router/authRoutes')
 
 // Import Controllers
 const ToughtsController = require('./controllers/ToughtsController')
@@ -68,6 +69,7 @@ app.use((req, res, next) => {
 
 // Routes:
 app.use('/toughts', toughtsRoutes) // Definindo a rota toughtsRoutes no index.js
+app.use('/', authRoutes) // Definindo a rota authRoutes no index.js
 
 app.get('/', ToughtsController.showToughts)
 
