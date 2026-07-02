@@ -1,10 +1,14 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
+
 metadata:
-  name: rede-social-toughts
+  name: rede-social-thoughts
+  description: Rede social desenvolvida em Node.js
   annotations:
-    github.com/project-slug: PedroLung/rede-social-toughts
+    github.com/project-slug: PedroLung/rede-social-thoughts
+    backstage.io/techdocs-ref: dir:.
+
 spec:
-  type: other
-  lifecycle: unknown
-  owner: guests
+  type: service
+  lifecycle: experimental
+  owner: user:default/guest

@@ -1,0 +1,13 @@
+# Arquitetura
+
+```
+Cliente
+
+↓
+
+Express
+
+↓
+
+MongoDB
+```
