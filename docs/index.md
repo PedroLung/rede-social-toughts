@@ -1,16 +1,47 @@
-# Rede Social Thoughts
+# 💭 Rede Social Thoughts
 
-Bem-vindo à documentação.
+Bem-vindo à documentação técnica da aplicação **Rede Social Thoughts**.
 
-## Tecnologias
+Esta aplicação é uma rede social simples desenvolvida para estudo utilizando Node.js, Express e MySQL.
 
-- Node.js
-- Express
-- MongoDB
+---
 
-## Executando
+## Objetivo
 
-```bash
-npm install
-npm start
-```
+Permitir que usuários possam:
+
+- Criar uma conta
+- Fazer login
+- Compartilhar pensamentos
+- Editar pensamentos
+- Remover pensamentos
+
+---
+
+## Stack
+
+| Tecnologia | Utilização |
+|------------|------------|
+| Node.js | Runtime |
+| Express | Backend |
+| Handlebars | Templates HTML |
+| MySQL | Banco de Dados |
+| Sequelize | ORM |
+| Express Session | Sessões |
+| bcryptjs | Hash de senha |
+
+---
+
+## Arquitetura
+
+![Arquitetura](images/architecture.png)
+
+---
+
+## Links
+
+- Getting Started
+- Arquitetura
+- API
+- Deploy
+- Runbook

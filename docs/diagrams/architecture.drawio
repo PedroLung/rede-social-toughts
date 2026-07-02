@@ -1,0 +1,17 @@
+```mermaid
+graph TD
+
+User[👤 Usuário]
+
+User --> Browser[🌐 Navegador]
+
+Browser --> Express[Express]
+
+Express --> Controller[Controllers]
+
+Controller --> Model[Models]
+
+Model --> Sequelize[Sequelize]
+
+Sequelize --> MySQL[(MySQL)]
+```

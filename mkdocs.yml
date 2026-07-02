@@ -1,11 +1,22 @@
 site_name: Rede Social Thoughts
 
+theme:
+  name: material
+
 plugins:
   - techdocs-core
 
-
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - tables
+  - toc
 
 nav:
   - Home: index.md
+  - Getting Started: getting-started.md
   - Arquitetura: architecture.md
   - API: api.md
+  - Deploy: deployment.md
+  - Runbook: runbook.md
