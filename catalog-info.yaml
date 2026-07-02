@@ -3,12 +3,79 @@ kind: Component
 
 metadata:
   name: rede-social-thoughts
-  description: Rede social desenvolvida em Node.js
+  title: Rede Social Thoughts
+  description: Plataforma de rede social desenvolvida em Node.js utilizando Express, Sequelize e MySQL.
+
   annotations:
-    github.com/project-slug: PedroLung/rede-social-thoughts
+    github.com/project-slug: PedroLung/rede-social-toughts
     backstage.io/techdocs-ref: dir:.
+
+  tags:
+    - nodejs
+    - express
+    - mysql
+    - sequelize
+    - javascript
+    - mvc
+    - social-network
+
+  links:
+    - url: https://github.com/PedroLung/rede-social-toughts
+      title: GitHub Repository
+      icon: github
 
 spec:
   type: service
   lifecycle: experimental
-  owner: user:default/guest
+  owner: user:guest
+
+  system: thoughts-platform
+
+  dependsOn:
+    - resource:default/thoughts-db
+
+  providesApis:
+    - thoughts-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+
+metadata:
+  name: thoughts-platform
+  title: Thoughts Platform
+  description: Plataforma da Rede Social Thoughts.
+
+spec:
+  owner: user:guest
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+
+metadata:
+  name: thoughts-db
+  title: MySQL Database
+  description: Banco de dados MySQL da aplicação.
+
+spec:
+  type: database
+  owner: user:guest
+  system: thoughts-platform
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+
+metadata:
+  name: thoughts-api
+  title: Thoughts REST API
+  description: API REST da aplicação.
+
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:guest
+
+  definition:
+    $text: ./openapi.yaml

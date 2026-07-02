@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+
+metadata:
+  name: thoughts-db
+  title: MySQL Database
+  description: Banco de dados MySQL utilizado pela aplicação.
+
+spec:
+  type: database
+  owner: user:guest
+  system: thoughts-platform

@@ -1,0 +1,32 @@
+openapi: 3.0.3
+
+info:
+  title: Thoughts API
+  version: 1.0.0
+  description: API da Rede Social Thoughts.
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+
+  /:
+    get:
+      summary: Página inicial
+      responses:
+        '200':
+          description: OK
+
+  /login:
+    get:
+      summary: Tela de login
+      responses:
+        '200':
+          description: OK
+
+  /register:
+    get:
+      summary: Tela de cadastro
+      responses:
+        '200':
+          description: OK

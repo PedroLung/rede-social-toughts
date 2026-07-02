@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+
+metadata:
+  name: thoughts-platform
+  title: Thoughts Platform
+  description: Plataforma responsável pelo gerenciamento da aplicação Rede Social Thoughts.
+
+spec:
+  owner: user:guest
